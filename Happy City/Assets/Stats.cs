@@ -19,10 +19,5 @@ public class Stats : MonoBehaviour {
         {
             GetComponent<TextMesh>().text = "Time : " + Gm.timeTotal;
         }
-        if (gameObject.name == "runStatus")
-        {
-            GetComponent<TextMesh>().text =  Gm.lvlCompStatus;
-        }
-
     }
 }

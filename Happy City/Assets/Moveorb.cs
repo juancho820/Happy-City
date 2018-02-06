@@ -8,6 +8,12 @@ public class Moveorb : MonoBehaviour {
     public KeyCode moveL;
     public KeyCode moveR;
 
+    public GameObject Canvas;
+
+    float jump;
+    public float speed;
+
+    public float velocidad = 5;
     public float horizVel = 0;
     public int laneNum = 2;
     public string controlLocked = "n";
@@ -22,7 +28,9 @@ public class Moveorb : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        GetComponent<Rigidbody>().velocity = new Vector3(horizVel, Gm.veloVer, 5);
+        velocidad += 0.001f;
+
+        GetComponent<Rigidbody>().velocity = new Vector3(horizVel, 0, velocidad);
 
         if ((Input.GetKeyDown(moveL)) && (laneNum > 1) && (controlLocked == "n"))
         {
@@ -38,6 +46,13 @@ public class Moveorb : MonoBehaviour {
             laneNum += 1;
             controlLocked = "y";
         }
+        if (Input.GetKeyDown(KeyCode.W) && (controlLocked == "n"))
+        {
+            GetComponent<Rigidbody>().AddForce(Vector3.up * 1000, ForceMode.Impulse);
+            StartCoroutine(stopSlide());
+            controlLocked = "y";
+        }
+
     }
 
     void OnCollisionEnter(Collision other)
@@ -47,7 +62,7 @@ public class Moveorb : MonoBehaviour {
             Destroy(gameObject);
             Gm.zVelAdj = 0;
             Instantiate(boomObj, transform.position, boomObj.rotation);
-            Gm.lvlCompStatus = "Fail";
+            Canvas.SetActive(true);
         }
         if (other.gameObject.name == "Capsule(Clone)")
         {
@@ -57,26 +72,12 @@ public class Moveorb : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "RampBotTrigger")
-        {
-            Gm.veloVer = 2;
-        }
-        if (other.gameObject.name == "RampTopTrigger")
-        {
-            Gm.veloVer = 0;
-        }
-        if(other.gameObject.name == "Exit")
-        {
-            SceneManager.LoadScene("LevelComp");
-            Gm.lvlCompStatus = "Sucess!!";
-        }
         if (other.gameObject.name == "coin(Clone)")
         {
             Destroy(other.gameObject);
             Gm.coinTotal += 1;
         }
     }
-
 
     IEnumerator stopSlide()
     {
