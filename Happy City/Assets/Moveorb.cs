@@ -15,6 +15,7 @@ public class Moveorb : MonoBehaviour {
 
     public float velocidad = 5;
     public float horizVel = 0;
+    public float Salto = 0;
     public int laneNum = 2;
     public string controlLocked = "n";
 
@@ -30,7 +31,7 @@ public class Moveorb : MonoBehaviour {
 
         velocidad += 0.001f;
 
-        GetComponent<Rigidbody>().velocity = new Vector3(horizVel, 0, velocidad);
+        GetComponent<Rigidbody>().velocity = new Vector3(horizVel, GetComponent<Rigidbody>().velocity.y, velocidad);
 
         if ((Input.GetKeyDown(moveL)) && (laneNum > 1) && (controlLocked == "n"))
         {
@@ -48,7 +49,8 @@ public class Moveorb : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.W) && (controlLocked == "n"))
         {
-            GetComponent<Rigidbody>().AddForce(Vector3.up * 1000, ForceMode.Impulse);
+            Salto = 5;
+            GetComponent<Rigidbody>().AddForce(Vector3.up * 50, ForceMode.Impulse);
             StartCoroutine(stopSlide());
             controlLocked = "y";
         }
@@ -84,5 +86,6 @@ public class Moveorb : MonoBehaviour {
         yield return new WaitForSeconds(.5f);
         horizVel = 0;
         controlLocked = "n";
+        Salto = 0;
     }
 }
