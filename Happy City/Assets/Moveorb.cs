@@ -8,15 +8,14 @@ public class Moveorb : MonoBehaviour {
     public KeyCode moveL;
     public KeyCode moveR;
 
+    public int PowerMoneda = 1;
+
+    public Transform puntoa, puntob, puntoc;
     public GameObject Canvas;
 
-    float jump;
-    public float speed;
-
-    public float velocidad = 5;
-    public float horizVel = 0;
-    public float Salto = 0;
-    public int laneNum = 2;
+    float speed = 1f;
+    int linea = 0;
+    public float velocidadZ = 5;
     public string controlLocked = "n";
 
     public Transform boomObj;
@@ -28,28 +27,44 @@ public class Moveorb : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        velocidadZ += 0.001f;
+        speed += 0.001f;
+        float step = speed * Time.deltaTime;
 
-        velocidad += 0.001f;
+        GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, GetComponent<Rigidbody>().velocity.y, velocidadZ);
 
-        GetComponent<Rigidbody>().velocity = new Vector3(horizVel, GetComponent<Rigidbody>().velocity.y, velocidad);
-
-        if ((Input.GetKeyDown(moveL)) && (laneNum > 1) && (controlLocked == "n"))
+        if (Input.GetKeyDown(moveL))
         {
-            horizVel = -2;
-            StartCoroutine(stopSlide());
-            laneNum -= 1;
-            controlLocked = "y";
+            linea -= 1;
+            if(linea < -1)
+            {
+                linea = -1;
+            }
         }
-        if ((Input.GetKeyDown(moveR)) && (laneNum < 3) && (controlLocked == "n"))
+        if (Input.GetKeyDown(moveR))
         {
-            horizVel = 2;
-            StartCoroutine(stopSlide());
-            laneNum += 1;
-            controlLocked = "y";
+            linea += 1;
+            if (linea > 1)
+            {
+                linea = 1;
+            }
         }
+
+        if(linea == -1)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, puntoa.position, step);
+        }
+        if (linea == 0)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, puntob.position, step);
+        }
+        if (linea == 1)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, puntoc.position, step);
+        }
+
         if (Input.GetKeyDown(KeyCode.W) && (controlLocked == "n"))
         {
-            Salto = 5;
             GetComponent<Rigidbody>().AddForce(Vector3.up * 50, ForceMode.Impulse);
             StartCoroutine(stopSlide());
             controlLocked = "y";
@@ -62,13 +77,14 @@ public class Moveorb : MonoBehaviour {
         if(other.gameObject.tag == "lethal")
         {
             Destroy(gameObject);
-            Gm.zVelAdj = 0;
             Instantiate(boomObj, transform.position, boomObj.rotation);
             Canvas.SetActive(true);
         }
         if (other.gameObject.name == "Capsule(Clone)")
         {
             Destroy(other.gameObject);
+            PowerMoneda = 2;
+            StartCoroutine(StopPowerUp());
         }
     }
 
@@ -77,15 +93,18 @@ public class Moveorb : MonoBehaviour {
         if (other.gameObject.name == "coin(Clone)")
         {
             Destroy(other.gameObject);
-            Gm.coinTotal += 1;
+            Gm.coinTotal += 1*PowerMoneda;
         }
     }
 
     IEnumerator stopSlide()
     {
         yield return new WaitForSeconds(.5f);
-        horizVel = 0;
         controlLocked = "n";
-        Salto = 0;
+    }
+    IEnumerator StopPowerUp()
+    {
+        yield return new WaitForSeconds(10f);
+        PowerMoneda = 1;
     }
 }

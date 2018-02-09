@@ -52,7 +52,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\CamaraController.cs" />
+     <Compile Include="Assets\CarritoChocon.cs" />
      <Compile Include="Assets\effects.cs" />
+     <Compile Include="Assets\Follower.cs" />
      <Compile Include="Assets\Gm.cs" />
      <Compile Include="Assets\Moveorb.cs" />
      <Compile Include="Assets\Stats.cs" />

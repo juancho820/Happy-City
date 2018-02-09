@@ -19,6 +19,5 @@ public class effects : MonoBehaviour {
         {
             transform.Rotate(0, 0, 3);
         }
-
     }
 }
