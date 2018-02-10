@@ -8,15 +8,17 @@ public class Moveorb : MonoBehaviour {
     public KeyCode moveL;
     public KeyCode moveR;
 
-    public int PowerMoneda = 1;
+    public static int PowerMoneda = 1;
 
     public Transform puntoa, puntob, puntoc;
     public GameObject Canvas;
+    public GameObject Magneto;
 
     float speed = 1f;
     int linea = 0;
     public float velocidadZ = 5;
     public string controlLocked = "n";
+    public float fly = 1;
 
     public Transform boomObj;
 
@@ -84,7 +86,19 @@ public class Moveorb : MonoBehaviour {
         {
             Destroy(other.gameObject);
             PowerMoneda = 2;
-            StartCoroutine(StopPowerUp());
+            StartCoroutine(StopPowerUpX2());
+        }
+        if (other.gameObject.name == "Magneto(Clone)")
+        {
+            Destroy(other.gameObject);
+            Magneto.gameObject.SetActive(true);
+            StartCoroutine(StopPowerUpMagneto());
+        }
+        if (other.gameObject.name == "Fly(Clone)")
+        {
+            Destroy(other.gameObject);
+            
+            StartCoroutine(StopPowerUpMagneto());
         }
     }
 
@@ -102,9 +116,19 @@ public class Moveorb : MonoBehaviour {
         yield return new WaitForSeconds(.5f);
         controlLocked = "n";
     }
-    IEnumerator StopPowerUp()
+    IEnumerator StopPowerUpX2()
     {
         yield return new WaitForSeconds(10f);
         PowerMoneda = 1;
+    }
+    IEnumerator StopPowerUpMagneto()
+    {
+        yield return new WaitForSeconds(10f);
+        Magneto.gameObject.SetActive(false);
+    }
+    IEnumerator StopPowerUpFly()
+    {
+        yield return new WaitForSeconds(10f);
+        fly = 1;
     }
 }

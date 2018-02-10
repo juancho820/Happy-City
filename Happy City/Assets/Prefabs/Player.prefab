@@ -96,7 +96,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &114635253065151450
 MonoBehaviour:
@@ -111,7 +111,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveL: 97
   moveR: 100
-  PowerMoneda: 0
   puntoa: {fileID: 0}
   puntob: {fileID: 0}
   puntoc: {fileID: 0}

@@ -23,6 +23,8 @@ public class Gm : MonoBehaviour {
     public Transform ObstObj4;
     public Transform CapsuleObj;
     public Transform CoinObj;
+    public Transform Magneto;
+    public Transform Fly;
 
     public float randProced;
     public float randObj;
@@ -67,7 +69,7 @@ public class Gm : MonoBehaviour {
                     }
                     if (randObj > 3 && randObj < 4)
                     {
-                        Instantiate(CapsuleObj, new Vector3(randCarril, 3.35f, zScenePos + Random.Range(-18, 18)), CapsuleObj.rotation);
+                        Instantiate(Magneto, new Vector3(randCarril, 3.35f, zScenePos + Random.Range(-18, 18)), Magneto.rotation);
                     }
                     if (randObj > 4 && randObj < 5)
                     {
@@ -97,7 +99,7 @@ public class Gm : MonoBehaviour {
                     }
                     if (randObj > 3 && randObj < 4)
                     {
-                        Instantiate(CapsuleObj, new Vector3(randCarril, 3.35f, zScenePos + Random.Range(-18, 18)), CapsuleObj.rotation);
+                        Instantiate(Fly, new Vector3(randCarril, 3.35f, zScenePos + Random.Range(-18, 18)), Fly.rotation);
                     }
                     if (randObj > 4 && randObj < 5)
                     {
