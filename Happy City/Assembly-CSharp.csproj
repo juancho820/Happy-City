@@ -55,11 +55,13 @@
      <Compile Include="Assets\Bolos.cs" />
      <Compile Include="Assets\CamaraController.cs" />
      <Compile Include="Assets\CarritoChocon.cs" />
+     <Compile Include="Assets\Destructor.cs" />
      <Compile Include="Assets\effects.cs" />
      <Compile Include="Assets\Follower.cs" />
      <Compile Include="Assets\FollowerPowerUp.cs" />
      <Compile Include="Assets\Gm.cs" />
      <Compile Include="Assets\Moveorb.cs" />
+     <Compile Include="Assets\PowerUpFly.cs" />
      <Compile Include="Assets\Stats.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

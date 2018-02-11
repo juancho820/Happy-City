@@ -19,7 +19,6 @@ public class Moveorb : MonoBehaviour {
     int linea = 0;
     public float velocidadZ = 5;
     public string controlLocked = "n";
-    public float fly = 1;
 
     public Transform boomObj;
 
@@ -34,7 +33,10 @@ public class Moveorb : MonoBehaviour {
         speed += 0.001f;
         float step = speed * Time.deltaTime;
 
-        GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, GetComponent<Rigidbody>().velocity.y, velocidadZ);
+        if(PowerUpFly.Fly == false)
+        {
+            GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, GetComponent<Rigidbody>().velocity.y, velocidadZ);
+        }
 
         if (Input.GetKeyDown(moveL))
         {
@@ -103,9 +105,7 @@ public class Moveorb : MonoBehaviour {
         }
         if (other.gameObject.name == "Fly(Clone)")
         {
-            Destroy(other.gameObject);
-            
-            StartCoroutine(StopPowerUpMagneto());
+            PowerUpFly.Fly = true;
         }
     }
 
@@ -134,10 +134,5 @@ public class Moveorb : MonoBehaviour {
     {
         yield return new WaitForSeconds(10f);
         Magneto.gameObject.SetActive(false);
-    }
-    IEnumerator StopPowerUpFly()
-    {
-        yield return new WaitForSeconds(10f);
-        fly = 1;
     }
 }
