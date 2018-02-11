@@ -13,6 +13,7 @@ public class Moveorb : MonoBehaviour {
     public Transform puntoa, puntob, puntoc;
     public GameObject Canvas;
     public GameObject Magneto;
+    public GameObject AgacharseObj;
 
     float speed = 1f;
     int linea = 0;
@@ -71,6 +72,12 @@ public class Moveorb : MonoBehaviour {
             StartCoroutine(stopSlide());
             controlLocked = "y";
         }
+        if (Input.GetKeyDown(KeyCode.S) && (controlLocked == "n"))
+        {
+            Agacharse.agacharse = true;
+            StartCoroutine(stopSlide());
+            controlLocked = "y";
+        }
 
     }
 
@@ -115,6 +122,8 @@ public class Moveorb : MonoBehaviour {
     {
         yield return new WaitForSeconds(.5f);
         controlLocked = "n";
+        Agacharse.agacharse = false;
+        AgacharseObj.gameObject.SetActive(true);
     }
     IEnumerator StopPowerUpX2()
     {

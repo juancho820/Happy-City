@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4363169789515808}
   - component: {fileID: 33257030741863134}
-  - component: {fileID: 135105266259371586}
   - component: {fileID: 23908290865857820}
   - component: {fileID: 54729038634966946}
   - component: {fileID: 114635253065151450}
+  - component: {fileID: 65946526647214806}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -98,6 +98,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &65946526647214806
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1723555917827888}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &114635253065151450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,18 +127,8 @@ MonoBehaviour:
   puntob: {fileID: 0}
   puntoc: {fileID: 0}
   Canvas: {fileID: 0}
+  Magneto: {fileID: 0}
   velocidadZ: 3
   controlLocked: n
+  fly: 1
   boomObj: {fileID: 4290571837883462, guid: e7bd6294539f6ab44955aab01635d002, type: 2}
---- !u!135 &135105266259371586
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1723555917827888}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
