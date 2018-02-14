@@ -18,7 +18,7 @@ public class CarritoChocon : MonoBehaviour {
 
         if (transform.position.z - player.transform.position.z < 40)
         {
-            transform.Translate(new Vector3(0,0,-0.2f));
+            transform.Translate(new Vector3(0,0,-0.1f));
         }
 		
 	}

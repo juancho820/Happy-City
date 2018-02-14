@@ -19,5 +19,13 @@ public class effects : MonoBehaviour {
         {
             transform.Rotate(0, 0, 3);
         }
+        if (gameObject.name == "Magneto(Clone)")
+        {
+            transform.Rotate(3, 0, 0);
+        }
+        if (gameObject.name == "Fly(Clone)")
+        {
+            transform.Rotate(3, 0, 0);
+        }
     }
 }

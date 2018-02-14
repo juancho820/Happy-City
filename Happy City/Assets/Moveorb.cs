@@ -77,7 +77,7 @@ public class Moveorb : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.S) && (controlLocked == "n"))
         {
             Agacharse.agacharse = true;
-            StartCoroutine(stopSlide());
+            StartCoroutine(StopAgacharse());
             controlLocked = "y";
         }
 
@@ -122,8 +122,6 @@ public class Moveorb : MonoBehaviour {
     {
         yield return new WaitForSeconds(.5f);
         controlLocked = "n";
-        Agacharse.agacharse = false;
-        AgacharseObj.gameObject.SetActive(true);
     }
     IEnumerator StopPowerUpX2()
     {
@@ -134,5 +132,13 @@ public class Moveorb : MonoBehaviour {
     {
         yield return new WaitForSeconds(10f);
         Magneto.gameObject.SetActive(false);
+    }
+
+    IEnumerator StopAgacharse()
+    {
+        yield return new WaitForSeconds(1.5f);
+        controlLocked = "n";
+        Agacharse.agacharse = false;
+        AgacharseObj.gameObject.SetActive(true);
     }
 }
