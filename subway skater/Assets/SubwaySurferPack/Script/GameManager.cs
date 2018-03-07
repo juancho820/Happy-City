@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public bool isDead { set; get; }
     private bool isGameStarted = false;
+    public static bool Once = false;
     private PlayerMotor motor;
 
     // UI and UI fields
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Once = false;
         Instance = this;
         modifierScore = 1;
         motor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
     {
         if(MobileInput.Instance.Tap && !isGameStarted)
         {
+            Once = true;
             isGameStarted = true;
             motor.StartRunning();
             FindObjectOfType<GlacierSpawner>().IsScrolling = true;

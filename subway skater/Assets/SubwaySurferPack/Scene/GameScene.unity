@@ -2392,10 +2392,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1222932662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 133b3872b7e66f04f95869248a2201b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 6372f94eca9d48b43a9a8e33c5724a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SHOW_COLLIDER: 0
+  NumeroDeSpawns: 5
+  Contador: 0
+  zona: 0
   ramps:
   - {fileID: 114816521095385166, guid: 58e1b940606d3874486e3837d960cdd6, type: 2}
   - {fileID: 114476078811896024, guid: 9c6c97068c3ca8c4f812e83bba5fa61f, type: 2}
@@ -2409,12 +2412,18 @@ MonoBehaviour:
   pieces: []
   availableSegments:
   - {fileID: 114096262848026468, guid: 8986173e7863a7d4b96564d00cd1d45b, type: 2}
-  - {fileID: 114122574098891146, guid: 2481f5ff56271c64b8cbf19ed74aadf7, type: 2}
-  - {fileID: 114504690745995284, guid: 694d1d324e0fc6d41aaae9ff32166128, type: 2}
+  availableSegments2:
   - {fileID: 114316535607539596, guid: 8956d142678bee741adf0c25f35669c5, type: 2}
+  availableSegments3:
+  - {fileID: 114122574098891146, guid: 2481f5ff56271c64b8cbf19ed74aadf7, type: 2}
+  availableSegments4:
+  - {fileID: 114504690745995284, guid: 694d1d324e0fc6d41aaae9ff32166128, type: 2}
   availableTransitions:
   - {fileID: 114489184555565106, guid: fb5d96ccc8aea93498d2b94205279e75, type: 2}
   segments: []
+  segments2: []
+  segments3: []
+  segments4: []
 --- !u!4 &1222932664
 Transform:
   m_ObjectHideFlags: 0
