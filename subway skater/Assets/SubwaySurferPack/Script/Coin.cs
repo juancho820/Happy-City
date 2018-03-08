@@ -22,7 +22,17 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter (Collider other)
     {
-        if(other.tag == "Player")
+        if(Magneto.powerMagneto == false)
+        {
+            if (other.tag == "Player")
+            {
+                cogida = true;
+                GameManager.Instance.GetCoin();
+                anim.SetTrigger("Collected");
+            }
+        }
+        
+        if(other.tag == "Magneto")
         {
             cogida = true;
             GameManager.Instance.GetCoin();

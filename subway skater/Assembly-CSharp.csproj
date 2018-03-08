@@ -68,11 +68,13 @@
      <Compile Include="Assets\SubwaySurferPack\Script\GameManager.cs" />
      <Compile Include="Assets\SubwaySurferPack\Script\GlacierSpawner.cs" />
      <Compile Include="Assets\SubwaySurferPack\Script\LevelManager.cs" />
+     <Compile Include="Assets\SubwaySurferPack\Script\Magneto.cs" />
      <Compile Include="Assets\SubwaySurferPack\Script\MobileInput.cs" />
      <Compile Include="Assets\SubwaySurferPack\Script\Piece.cs" />
      <Compile Include="Assets\SubwaySurferPack\Script\PieceSpawner.cs" />
      <Compile Include="Assets\SubwaySurferPack\Script\PlayerMotor.cs" />
      <Compile Include="Assets\SubwaySurferPack\Script\Segment.cs" />
+     <Compile Include="Assets\SubwaySurferPack\Script\X2.cs" />
      <None Include="Assets\Asset store props\Particulas\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />
      <None Include="Assets\Asset store props\Particulas\Cartoon FX\Shaders\CFXM_MobileParticleAdd_Alpha8.shader" />
      <None Include="Assets\Asset store props\Particulas\Cartoon FX\CartoonFX Free.txt" />
