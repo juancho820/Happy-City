@@ -305,11 +305,13 @@
     <Compile Include="Assets\SubwaySurferPack\Script\GameManager.cs" />
     <Compile Include="Assets\SubwaySurferPack\Script\GlacierSpawner.cs" />
     <Compile Include="Assets\SubwaySurferPack\Script\LevelManager.cs" />
+    <Compile Include="Assets\SubwaySurferPack\Script\Magneto.cs" />
     <Compile Include="Assets\SubwaySurferPack\Script\MobileInput.cs" />
     <Compile Include="Assets\SubwaySurferPack\Script\Piece.cs" />
     <Compile Include="Assets\SubwaySurferPack\Script\PieceSpawner.cs" />
     <Compile Include="Assets\SubwaySurferPack\Script\PlayerMotor.cs" />
     <Compile Include="Assets\SubwaySurferPack\Script\Segment.cs" />
+    <Compile Include="Assets\SubwaySurferPack\Script\X2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Asset store props\Food Pack\Shaders\Food.shader" />
