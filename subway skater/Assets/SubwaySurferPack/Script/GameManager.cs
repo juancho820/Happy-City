@@ -11,10 +11,12 @@ public class GameManager : MonoBehaviour
 
     public bool isDead { set; get; }
     private bool isGameStarted = false;
+    private bool iniciado = false;
+    public static bool Once = false;
     private PlayerMotor motor;
 
     // UI and UI fields
-    public Animator gameCanvas, menuAnim, diamondAnim;
+    public Animator gameCanvas, menuAnim, diamondAnim, botonAnim;
     public Text scoreText, coinText, modifierText, hiscoreText;
     private float score, coinScore, modifierScore;
     private int lastScore;
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Once = false;
         Instance = this;
         modifierScore = 1;
         motor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
@@ -34,17 +37,21 @@ public class GameManager : MonoBehaviour
         scoreText.text = scoreText.text = score.ToString("0");
 
         hiscoreText.text = PlayerPrefs.GetInt("Hiscore").ToString();
+        botonAnim.SetTrigger("Iniciar");
     }
     private void Update()
     {
-        if(MobileInput.Instance.Tap && !isGameStarted)
+        if(iniciado == true)
         {
-            isGameStarted = true;
-            motor.StartRunning();
-            FindObjectOfType<GlacierSpawner>().IsScrolling = true;
-            FindObjectOfType<CamaraMotor>().IsMoving = true;
-            gameCanvas.SetTrigger("Show");
-            menuAnim.SetTrigger("Hide");
+            if (MobileInput.Instance.Tap && !isGameStarted)
+            {
+                Once = true;
+                isGameStarted = true;
+                motor.StartRunning();
+                FindObjectOfType<GlacierSpawner>().IsScrolling = true;
+                FindObjectOfType<CamaraMotor>().IsMoving = true;
+                gameCanvas.SetTrigger("Show");
+            }
         }
 
         if (isGameStarted && !isDead)
@@ -62,10 +69,17 @@ public class GameManager : MonoBehaviour
     public void GetCoin()
     {
         diamondAnim.SetTrigger("Collect");
-        coinScore ++;
+        coinScore += 1 *X2.x2;
         coinText.text = coinScore.ToString("0");
         score += COIN_SCORE_AMOUNT;
         scoreText.text = scoreText.text = score.ToString("0");
+    }
+
+    public void Infinito()
+    {
+        iniciado = true;
+        menuAnim.SetTrigger("Hide");
+        botonAnim.SetTrigger("Esconder");
     }
 
     public void UpdateModifier(float modifierAmount)
