@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         if (isGameStarted && !isDead)
         {
             // Bump score up
-            score += (Time.deltaTime * modifierScore);
+            score = GameObject.FindGameObjectWithTag("Player").transform.position.z;
             if(lastScore != (int)score)
             {
                 lastScore = (int)score;
@@ -71,8 +71,8 @@ public class GameManager : MonoBehaviour
         diamondAnim.SetTrigger("Collect");
         coinScore += 1 *X2.x2;
         coinText.text = coinScore.ToString("0");
-        score += COIN_SCORE_AMOUNT;
-        scoreText.text = scoreText.text = score.ToString("0");
+        //score += COIN_SCORE_AMOUNT;
+        //scoreText.text = scoreText.text = score.ToString("0");
     }
 
     public void Infinito()
